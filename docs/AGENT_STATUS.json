@@ -1,0 +1,23 @@
+{
+  "last_updated": "2026-02-23T20:58:09+05:30",
+  "active_phase": "PHASE_1",
+  "active_phase_name": "BOOT: REPO SCAFFOLDING",
+  "executor": "AGENT_2",
+  "agent2_lock": {
+    "allowed_phase_id": "PHASE_1"
+  },
+  "phases": {
+    "PHASE_1": {
+      "status": "ACTIVE",
+      "executor": "AGENT_2",
+      "started": "2026-02-23T20:58:09+05:30",
+      "completed": null
+    },
+    "PHASE_2": {
+      "status": "BLOCKED",
+      "executor": "AGENT_2",
+      "started": null,
+      "completed": null
+    }
+  }
+}
