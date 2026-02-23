@@ -1,56 +1,59 @@
-# INFO_FILE_NAMES.md — Naming Conventions
+# AI-OS — File Naming Conventions & Standard Docs
 
-## Purpose
-Canonical file naming rules for this repository. All agents and extensions MUST follow these conventions.
+## Documentation Files (`docs/`)
 
----
+### Human-Facing (`INFO_*`)
+| File | Purpose |
+|------|---------|
+| `INFO_AI_RULES.md` | Workspace doctrine: API rules, naming law, agent behavior |
+| `INFO_GOAL.md` | Project goals and therapeutic objectives |
+| `INFO_STATUS.md` | Current development status |
+| `INFO_TECH_DEBT.md` | Technical debt and refactoring targets |
+| `INFO_HOW_TO_RUN.md` | Launch instructions |
+| `INFO_VISION.md` | Product vision |
+| `INFO_IDE_EXTENSIONS_ROLE.md` | Role contract for IDE extensions (Agent 0A/0B/0C): identification, default behavior, and logging rules |
 
-## File Prefix Summary
+### Agent-Operational (`AGENT_*`)
+| File | Purpose |
+|------|---------|
+| `AGENT_HANDOVER.md` | Inter-agent baton: missions, phases, gating |
+| `AGENT_DECISIONS.md` | Decision records (ADR-lite) |
+| `AGENT_STATUS.json` | Machine-readable phase state |
+| `AGENT_API_TRACE.jsonl` | OpenAI call trace (append-only) |
+| `AGENT_AGENT0_OUTBOX.md` | External IDE extension outbox: plans/critiques from Agent 0A/0B/0C for Agent 1 intake (append-only by default) |
 
-| Prefix    | Usage                                                        | Location          |
-|-----------|--------------------------------------------------------------|-------------------|
-| `INFO_`   | Human-readable docs: rules, plans, architecture, explainers  | `docs/`           |
-| `AGENT_`  | Agent operational files: state, handover, API trace          | `docs/`           |
-| `DB_`     | App database files                                           | `data/db/`        |
-| `MIG_`    | Schema migration files                                       | `data/db/migrations/` |
-| `LIB_`    | Quick-access JSON libraries                                  | `data/lib/`       |
-| `LIB_DB_` | Large queryable reference DBs                                | `data/libdb/`     |
-| `CACHE_`  | Regeneratable derived artifacts                              | `data/cache/`     |
-| `DEBUG_`  | Debug logs/dumps                                             | `logs/`           |
-| `TEMP_`   | Throwaway scripts                                            | `temp/`           |
-| `REVIEW_` | OpenAI review outputs (call_tag prefix)                      | `docs/reviews/`   |
-
----
-
-## Naming Patterns
-
-### Database Files
-```
-DB_<APP>_USER.sqlite          — user data
-DB_<APP>_<PURPOSE>.sqlite     — other data
-```
-
-### Migration Files
-```
-MIG_<TARGET_DB>_<YYYYMMDD>_<SEQ>_<ACTION>.sql
-Example: MIG_DB_APP_USER_20260223_001_ADD_SESSIONS.sql
-```
-
-### OpenAI Review Calls
-```
-call_tag: REVIEW_<TOPIC>_<YYYYMMDD>
-output file: docs/reviews/REVIEW_<TOPIC>_<YYYYMMDD>.md
-```
+### Others
+| File | Purpose |
+|------|---------|
+| `CHANGE_LOG.md` | Human timeline of major changes |
+| `reviews/REVIEW_*.md` | External review outputs |
+| `legacy/` | Quarantined deprecated files |
 
 ---
 
-## Phase Header Standard (AGENT_HANDOVER.md)
+## Data Files (`data/`)
 
-All phase headers MUST follow this format:
-```
-## PHASE_<N> — <NAME>  [STATUS: <ACTIVE|COMPLETED|BLOCKED>]  [EXECUTOR: <AGENT_1|AGENT_2>]
-```
+| Prefix | Location | Purpose |
+|--------|----------|---------|
+| `DB_*` | `data/db/` | Application databases (e.g., `DB_SESSION.json`) |
+| `MIG_*` | `data/db/migrations/` | Schema migrations |
+| `LIB_*` | `data/lib/` | Quick-access JSON libraries (e.g., `LIB_PROJECT_INDEX.json`) |
+| `LIB_DB_*` | `data/libdb/` | Large queryable databases |
+| `CACHE_*` | `data/cache/` | Regeneratable derived artifacts |
 
 ---
 
-_Last updated: 2026-02-23 by /boot_
+## Temporary Files
+
+| Prefix | Location | Purpose |
+|--------|----------|---------|
+| `TEMP_*` | `temp/` | Disposable scripts/utilities |
+| `DEBUG_*` | `temp/` or `logs/` | Debug dumps (deletable) |
+
+---
+
+## External API Calls
+
+| Prefix | Usage |
+|--------|-------|
+| `REVIEW_*` | Call tags for OpenAI reviews, saved to `docs/reviews/` |
