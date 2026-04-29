@@ -7,12 +7,7 @@ Records all significant architectural and operational decisions made by Agent 1 
 
 ## Decision Log
 
-### 2026-02-23 — /boot: Initial Template Structure Selected
 
-- **Decision**: Use standard AI OS 4-folder structure (`docs/`, `ops/`, `src/`, `data/`, `logs/`, `temp/`).
-- **Rationale**: Consistent with GLOBAL AI OS RULES naming conventions and template repo policy.
-- **Made by**: Agent 1 (via /boot)
-- **Alternatives considered**: None — template defines canonical structure.
 
 ---
 
